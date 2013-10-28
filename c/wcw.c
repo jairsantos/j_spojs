@@ -4,15 +4,14 @@
 // Esse é uma estrutura que será usada para guardar instâncias e
 // a contagem das intâncias;
 struct instance {
+	// Armazena o número de operações realizadas
+	int sort_count;
+
 	// Guarda o número de elementos.
 	int elements_count;
 
 	// Ponteiro que aponta para os elementos
 	int *elements;
-
-	// Essa variável guarda o número de movimentos necessários
-	// para ordenar o vetor.
-	int sort_count = 0;
 };
 
 struct s_root {
@@ -60,7 +59,7 @@ void main()
 	struct s_root root;
 
 	// Variáveis para fim de controle de loops no código.
-	int i, j;
+	int i, j, sort_count;
 
 
 	// Requisita a quantidade de instâncias para o usuário.
@@ -92,15 +91,15 @@ void main()
 		//--------------------------------
 	}
 
-	// Ordena os vetores lidos e conta.
+	// Ordena os vetores e contabiliza quantas movimentações foram necessárias.
 	for(i = 0; i < root.instances_count; i++)
 	{
 		root.instances[i].sort_count = linear_sort(root.instances[i].elements, root.instances[i].elements_count);
 	}
 
-	// Imprime aqui o número de operações de cada sort [ordenação].
+	// Exibe na tela o número de vezes de cada operação.
 	for(i = 0; i < root.instances_count; i++)
 	{
-		printf("%d", root.instances[i].sort_count);
+		printf("%d\n", root.instances[i].sort_count);
 	}
 }
