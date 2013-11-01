@@ -94,7 +94,7 @@ void main()
 	struct s_root root;
 
 	// Variáveis para fim de controle de loops no código.
-	int i, j, sort_count;
+	int i, j;
 
 
 	// Requisita a quantidade de instâncias para o usuário.
@@ -102,7 +102,7 @@ void main()
 
 	// Aloca a quantidade de memória necessária para fazer a leitura
 	// das instâncias dadas pelo usuário.
-	root.instances = (struct instance*) malloc (root.instances_count + 1);
+	root.instances = (struct instance*) malloc (root.instances_count * sizeof(struct s_root) + 1);
 
 	// Faz a interação para a leitura da quantidade de instâncias pedidas.
 	for(i = 0; i < root.instances_count; i++)
@@ -113,7 +113,7 @@ void main()
 
 		// Aloca a quantidade de memória necessária para fazer a leitura
 		// dos elementos dados pelo usuário.
-		root.instances[i].elements = (int*) malloc (root.instances[i].elements_count + 1);
+		root.instances[i].elements = (int*) malloc (root.instances[i].elements_count * sizeof(int) + 1);
 
 		// Faz leitura da sequência dada pelo usuário.
 		read_by_space(root.instances[i].elements);
@@ -125,6 +125,10 @@ void main()
 	for(i = 0; i < root.instances_count; i++)
 	{
 		root.instances[i].sort_count = linear_sort(root.instances[i].elements, root.instances[i].elements_count);
+		for(j = 0; j < root.instances[i].elements_count; j++)
+		{
+			printf(" %d ", root.instances[i].elements[j]);
+		}
 	}
 
 	// Exibe na tela o número de vezes de cada operação.
