@@ -51,6 +51,41 @@ int linear_sort(int ary[], int size)
 	return count;
 }
 
+int char_to_int(char chr)
+{
+	return ((int) chr) - 48;
+}
+
+void read_by_space(int *elements)
+{
+	// Esse purge limpa o stdin
+	__fpurge(stdin);
+
+	// Guarda o carcter que foi digitado
+	int chr;
+
+	// Valor do elemento lido
+	int element = 0;
+
+	// Guarda o índice onde está salvando os dados
+	int index = 0;
+	do
+	{
+		chr = fgetc(stdin);
+
+		if (chr == 32 || chr == '\n')
+		{
+			elements[index++] = element;
+			element = 0;
+		}
+		else
+		{
+			element = element * 10 + char_to_int(chr);
+		}
+
+	} while (chr != '\n');
+}
+
 void main()
 {
 
@@ -80,15 +115,10 @@ void main()
 		// dos elementos dados pelo usuário.
 		root.instances[i].elements = (int*) malloc (root.instances[i].elements_count + 1);
 
-		// Faz a iteração para a leitura da sequência dada pelo usuário.
-		//-------------------------------
-		for(j = 0; j < root.instances[i].elements_count; j++)
-		{
-			// Requisita o elemento para o usuário, e armazena no espaço
-			// indicado pelo ponteiro.
-			scanf("%d", &root.instances[i].elements[j]);
-		}
-		//--------------------------------
+		// Faz leitura da sequência dada pelo usuário.
+		read_by_space(root.instances[i].elements);
+
+		root.instances[i].elements;
 	}
 
 	// Ordena os vetores e contabiliza quantas movimentações foram necessárias.
