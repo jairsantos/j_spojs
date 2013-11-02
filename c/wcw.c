@@ -51,11 +51,15 @@ int linear_sort(int ary[], int size)
 	return count;
 }
 
+// Essa função converte caracter para inteiro.
+// Podia ser feito direto, mas preferi separar.
 int char_to_int(char chr)
 {
 	return ((int) chr) - 48;
 }
 
+// Essa função faz a leitura de elementos separados por espaços
+// e adiciona do vetor dado como paramentro.
 void read_by_space(int *elements)
 {
 	// Esse purge limpa o stdin
