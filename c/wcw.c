@@ -125,10 +125,6 @@ void main()
 	for(i = 0; i < root.instances_count; i++)
 	{
 		root.instances[i].sort_count = linear_sort(root.instances[i].elements, root.instances[i].elements_count);
-		for(j = 0; j < root.instances[i].elements_count; j++)
-		{
-			printf(" %d ", root.instances[i].elements[j]);
-		}
 	}
 
 	// Exibe na tela o número de vezes de cada operação.
